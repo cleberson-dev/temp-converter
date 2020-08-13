@@ -1,3 +1,77 @@
-<p>
-  Olá, mundinho! 🌎
-</p>
+<div>
+  <p>
+    Olá, mundinho! 🌎
+  </p>
+
+  <input
+    [formControl]="temperature"
+    type="number"
+    (input)="handleTemperatureChange('A')"
+  />
+  <div>
+    <input
+      [formControl]="unit"
+      type="radio"
+      name="unit"
+      value="celsius"
+      id="celsiusUnit"
+      checked
+      (input)="handleUnitChange('A', 'celsius')"
+    />
+    <label for="celsiusUnit">Celsius</label>
+    <input
+      [formControl]="unit"
+      type="radio"
+      name="unit"
+      value="fahrenheit"
+      id="fahrUnit"
+      (input)="handleUnitChange('A', 'fahrenheit')"
+    />
+    <label for="fahrUnit">Fahrenheit</label>
+    <input
+      [formControl]="unit"
+      type="radio"
+      name="unit"
+      value="kelvin"
+      id="kelvinUnit"
+      (input)="handleUnitChange('A', 'kelvin')"
+    />
+    <label for="kelvinUnit">Kelvin</label>
+  </div>
+
+  <input
+    [formControl]="temperature2"
+    type="number"
+    (input)="handleTemperatureChange('B')"
+  />
+  <div>
+    <input
+      [formControl]="unit2"
+      type="radio"
+      name="unit2"
+      value="celsius"
+      id="celsiusUnit2"
+      (input)="handleUnitChange('B', 'fahrenheit')"
+    />
+    <label for="celsiusUnit2">Celsius</label>
+    <input
+      [formControl]="unit2"
+      type="radio"
+      name="unit2"
+      value="fahrenheit"
+      id="fahrUnit2"
+      checked
+      (input)="handleUnitChange('B', 'fahrenheit')"
+    />
+    <label for="fahrUnit2">Fahrenheit</label>
+    <input
+      [formControl]="unit2"
+      type="radio"
+      name="unit2"
+      value="kelvin"
+      id="kelvinUnit2"
+      (input)="handleUnitChange('B', 'kelvin')"
+    />
+    <label for="kelvinUnit2">Kelvin</label>
+  </div>
+</div>
