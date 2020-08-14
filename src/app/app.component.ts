@@ -14,42 +14,55 @@ export class AppComponent {
   temperature = new FormControl(0);
   temperature2 = new FormControl(0);
 
-  unit = new FormControl('celsius');
-  unit2 = new FormControl('fahrenheit');
+  unitField = new FormControl('celsius');
+  unitField2 = new FormControl('fahrenheit');
+
+  units = [
+    { value: 'celsius', label: 'Celsius' },
+    { value: 'fahrenheit', label: 'Fahrenheit' },
+    { value: 'kelvin', label: 'Kelvin' }
+  ]
 
   handleTemperatureChange(side: string) {
     if (side === 'A') {
       const newTemperature2 = convert(
         this.temperature.value,
-        this.unit.value,
-        this.unit2.value
+        this.unitField.value,
+        this.unitField2.value
       );
       this.temperature2.setValue(newTemperature2);
     } else if (side === 'B') {
       const newTemperature = convert(
         this.temperature2.value,
-        this.unit2.value,
-        this.unit.value
+        this.unitField2.value,
+        this.unitField.value
       );
       this.temperature.setValue(newTemperature);
     }
   }
 
-  handleUnitChange(side: string, newUnit: TemperatureUnit) {
+  handleUnitChange(side: string, newUnit: string) {
     if (side === 'A') {
-      const newTemperature2 = convert(
-        this.temperature.value,
-        newUnit,
-        this.unit2.value
-      );
-      this.temperature2.setValue(newTemperature2);
-    } else if (side === 'B') {
       const newTemperature = convert(
         this.temperature2.value,
-        newUnit,
-        this.unit.value
+        this.unitField2.value,
+        (newUnit as TemperatureUnit)
       );
       this.temperature.setValue(newTemperature);
+    } else if (side === 'B') {
+      const newTemperature2 = convert(
+        this.temperature.value,
+        this.unitField.value,
+        (newUnit as TemperatureUnit),
+      );
+      this.temperature2.setValue(newTemperature2);
     }
+  }
+
+  isUnitSelected(other: string): boolean {
+    return other === this.unitField.value;
+  }
+  isUnit2Selected(other: string): boolean {
+    return other === this.unitField2.value;
   }
 }

@@ -1,77 +1,57 @@
-<div>
-  <p>
-    Olá, mundinho! 🌎
-  </p>
-
-  <input
-    [formControl]="temperature"
-    type="number"
-    (input)="handleTemperatureChange('A')"
-  />
-  <div>
+<main>
+  <div class="form-group">
     <input
-      [formControl]="unit"
-      type="radio"
-      name="unit"
-      value="celsius"
-      id="celsiusUnit"
-      checked
-      (input)="handleUnitChange('A', 'celsius')"
+      [formControl]="temperature"
+      type="number"
+      (input)="handleTemperatureChange('A')"
     />
-    <label for="celsiusUnit">Celsius</label>
-    <input
-      [formControl]="unit"
-      type="radio"
-      name="unit"
-      value="fahrenheit"
-      id="fahrUnit"
-      (input)="handleUnitChange('A', 'fahrenheit')"
-    />
-    <label for="fahrUnit">Fahrenheit</label>
-    <input
-      [formControl]="unit"
-      type="radio"
-      name="unit"
-      value="kelvin"
-      id="kelvinUnit"
-      (input)="handleUnitChange('A', 'kelvin')"
-    />
-    <label for="kelvinUnit">Kelvin</label>
+    <div class="units-group">
+      <div
+        *ngFor="let unit of units"
+        class="unit"
+        [ngClass]="{
+          selected: isUnitSelected(unit.value)
+        }"
+      >
+        <input
+          type="radio"
+          name="unit"
+          [formControl]="unitField"
+          [value]="unit.value"
+          [id]="unit.value + 'Unit'"
+          [checked]="isUnitSelected(unit.value)"
+          (input)="handleUnitChange('A', unit.value)"
+        />
+        <label [for]="unit.value + 'Unit'">{{ isUnitSelected(unit.value) ? unit.label : unit.label[0] }}</label>
+      </div>
+    </div>
   </div>
 
-  <input
-    [formControl]="temperature2"
-    type="number"
-    (input)="handleTemperatureChange('B')"
-  />
-  <div>
+  <div class="form-group">
     <input
-      [formControl]="unit2"
-      type="radio"
-      name="unit2"
-      value="celsius"
-      id="celsiusUnit2"
-      (input)="handleUnitChange('B', 'fahrenheit')"
+      [formControl]="temperature2"
+      type="number"
+      (input)="handleTemperatureChange('B')"
     />
-    <label for="celsiusUnit2">Celsius</label>
-    <input
-      [formControl]="unit2"
-      type="radio"
-      name="unit2"
-      value="fahrenheit"
-      id="fahrUnit2"
-      checked
-      (input)="handleUnitChange('B', 'fahrenheit')"
-    />
-    <label for="fahrUnit2">Fahrenheit</label>
-    <input
-      [formControl]="unit2"
-      type="radio"
-      name="unit2"
-      value="kelvin"
-      id="kelvinUnit2"
-      (input)="handleUnitChange('B', 'kelvin')"
-    />
-    <label for="kelvinUnit2">Kelvin</label>
+    <div class="units-group">
+      <div
+        *ngFor="let unit of units"
+        class="unit"
+        [ngClass]="{
+          selected: isUnit2Selected(unit.value)
+        }"
+      >
+        <input
+          type="radio"
+          name="unit2"
+          [formControl]="unitField2"
+          [value]="unit.value"
+          [id]="unit.value + 'Unit2'"
+          [checked]="isUnit2Selected(unit.value)"
+          (input)="handleUnitChange('B', unit.value)"
+        />
+        <label [for]="unit.value + 'Unit2'">{{ isUnit2Selected(unit.value) ? unit.label : unit.label[0] }}</label>
+      </div>
+    </div>
   </div>
-</div>
+</main>

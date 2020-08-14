@@ -1,0 +1,38 @@
+.form-group
+  font-family: 'Montserrat', sans-serif
+  width: 100%
+
+  input[type="number"]
+    border: none
+    outline: none
+    border-bottom: 3px solid #DCDCDC
+    font-size: 2rem
+    font-weight: bold
+    width: 100%
+
+  .units-group
+    display: flex
+    width: 100%
+    margin-top: 10px
+
+    .unit
+      width: fit-content
+      background-color: #DCDCDC
+      font-weight: bold
+      font-size: 1.75rem
+      width: 4rem
+      height: 4rem
+      display: flex
+      justify-content: center
+      align-items: center
+
+      input[type="radio"]
+        display: none
+
+    .unit.selected
+      flex-grow: 1
+      justify-content: flex-start
+      padding: 0 1rem 
+      background-color: #70C3FF
+      label
+        color: white
