@@ -1,57 +1,82 @@
-<main>
-  <div class="form-group">
-    <input
-      [formControl]="temperature"
-      type="number"
-      (input)="handleTemperatureChange('A')"
-    />
-    <div class="units-group">
-      <div
-        *ngFor="let unit of units"
-        class="unit"
-        [ngClass]="{
-          selected: isUnitSelected(unit.value)
-        }"
-      >
-        <input
-          type="radio"
-          name="unit"
-          [formControl]="unitField"
-          [value]="unit.value"
-          [id]="unit.value + 'Unit'"
-          [checked]="isUnitSelected(unit.value)"
-          (input)="handleUnitChange('A', unit.value)"
-        />
-        <label [for]="unit.value + 'Unit'">{{ isUnitSelected(unit.value) ? unit.label : unit.label[0] }}</label>
-      </div>
+<div id="app">
+  <header>
+    <div class="external-links">
+      <a href="https://github.com/cleberson-dev/temp-converter">
+        <img src="assets/github.svg" alt="github icon" class="github-logo" />
+      </a>
     </div>
-  </div>
 
-  <div class="form-group">
-    <input
-      [formControl]="temperature2"
-      type="number"
-      (input)="handleTemperatureChange('B')"
-    />
-    <div class="units-group">
-      <div
-        *ngFor="let unit of units"
-        class="unit"
-        [ngClass]="{
-          selected: isUnit2Selected(unit.value)
-        }"
-      >
-        <input
-          type="radio"
-          name="unit2"
-          [formControl]="unitField2"
-          [value]="unit.value"
-          [id]="unit.value + 'Unit2'"
-          [checked]="isUnit2Selected(unit.value)"
-          (input)="handleUnitChange('B', unit.value)"
-        />
-        <label [for]="unit.value + 'Unit2'">{{ isUnit2Selected(unit.value) ? unit.label : unit.label[0] }}</label>
+    <div class="logo">
+      <h1>Temperature <span>Converter</span></h1>
+    </div>
+  </header>
+
+  <main>
+    <div class="form-group">
+      <input
+        [formControl]="temperature"
+        type="number"
+        (input)="handleTemperatureChange('A')"
+      />
+      <div class="units-group">
+        <div
+          *ngFor="let unit of units"
+          class="unit"
+          [ngClass]="{
+            selected: isUnitSelected(unit.value)
+          }"
+        >
+          <input
+            type="radio"
+            name="unit"
+            [formControl]="unitField"
+            [value]="unit.value"
+            [id]="unit.value + 'Unit'"
+            [checked]="isUnitSelected(unit.value)"
+            (input)="handleUnitChange('A', unit.value)"
+          />
+          <label [for]="unit.value + 'Unit'">{{
+            isUnitSelected(unit.value) ? unit.label : unit.label[0]
+          }}</label>
+        </div>
       </div>
     </div>
-  </div>
-</main>
+
+    <div class="divider"></div>
+
+    <div class="form-group">
+      <input
+        [formControl]="temperature2"
+        type="number"
+        (input)="handleTemperatureChange('B')"
+      />
+      <div class="units-group">
+        <div
+          *ngFor="let unit of units"
+          class="unit"
+          [ngClass]="{
+            selected: isUnit2Selected(unit.value)
+          }"
+        >
+          <input
+            type="radio"
+            name="unit2"
+            [formControl]="unitField2"
+            [value]="unit.value"
+            [id]="unit.value + 'Unit2'"
+            [checked]="isUnit2Selected(unit.value)"
+            (input)="handleUnitChange('B', unit.value)"
+          />
+          <label [for]="unit.value + 'Unit2'">{{
+            isUnit2Selected(unit.value) ? unit.label : unit.label[0]
+          }}</label>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Feito com amor por <a class="github-contact" href="https://github.com/cleberson-dev">Cleberson Junior</a></p>
+    <p>Usando <img class="angular-logo" src="assets/angular-logo.png" alt="Angular logo" /></p>
+  </footer>
+</div>
